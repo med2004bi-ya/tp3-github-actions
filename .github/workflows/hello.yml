@@ -28,3 +28,11 @@ jobs:
           echo "Branche : $GITHUB_REF_NAME"
           echo "Commit : $GITHUB_SHA"
           echo "Événement : $GITHUB_EVENT_NAME"
+
+            - name: Test erreur volontaire
+        run: |
+          echo "Test d'une erreur volontaire"
+          exit 1
+
+      - name: Étape après erreur
+        run: echo "Cette étape ne devrait pas être exécutée"
