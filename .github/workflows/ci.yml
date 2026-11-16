@@ -28,3 +28,11 @@ jobs:
         run: |
           python -m pytest -v --cov=app --cov-report=term-missing --cov-fail-under=98
 
+      - name: Test erreur volontaire
+        run: |
+          echo "Test d'une erreur volontaire"
+          exit 1
+
+      - name: Étape exécutée même après une erreur
+        if: always()
+        run: echo "Cette étape s'exécute même après un échec"
